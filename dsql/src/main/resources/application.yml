@@ -1,0 +1,36 @@
+##是指,这个服务的名称
+#spring.application.name=CONSUME-SQL
+#  #该服务独有的端口号
+#server.port=9002
+#  #下面这个是指向Eureka注册中心,,,这样就注册成功了..
+#eureka.client.serviceUrl.defaultZone=http://localhost:10001/eureka/
+spring:
+  application:
+    name: CONSUME-SQL
+  datasource:
+    username: sa
+    password: 123456
+    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=CLOUD_DB_FY_BA;allowMultiQueries=true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+
+server:
+  port: 9002
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10001/eureka/
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.dsql.entity
+
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
